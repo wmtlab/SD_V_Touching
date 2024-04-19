@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using System.IO;
 
-namespace SdVTouching
+namespace SdVTouching.Gltf
 {
     public class ExtensionsLoader
     {

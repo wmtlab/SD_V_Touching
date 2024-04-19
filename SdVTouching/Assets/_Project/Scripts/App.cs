@@ -1,4 +1,5 @@
 using System.IO;
+using SdVTouching.Gltf;
 using UnityEngine;
 
 namespace SdVTouching
@@ -40,6 +41,8 @@ namespace SdVTouching
             _initialized = true;
         }
 
+        // TODO: interactivity controller
+        // TODO: haptic controller & haptic driver
         void FixedUpdate()
         {
             if (!_initialized)

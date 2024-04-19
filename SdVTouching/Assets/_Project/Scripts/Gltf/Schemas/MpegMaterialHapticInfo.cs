@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SdVTouching
+namespace SdVTouching.Gltf
 {
     public class MpegMaterialHapticInfo : MonoBehaviour
     {

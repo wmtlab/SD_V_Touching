@@ -7,7 +7,7 @@ using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace SdVTouching
+namespace SdVTouching.Gltf
 {
     public class MpegMaterialHapticLoader
     {
@@ -15,36 +15,36 @@ namespace SdVTouching
         public async UniTask LoadAsync(SceneDescription sd, Extensions extensions, JToken mpegMaterialHapticJson)
         {
             int mpegMaterialHapticCount = mpegMaterialHapticJson.Count();
-            extensions.mpegMaterialHaptic = new MpegMaterialHaptic[mpegMaterialHapticCount];
-            extensions.hapticTextures = new Dictionary<uint, Texture2D>();
+            extensions.MpegMaterialHaptics = new MpegMaterialHaptic[mpegMaterialHapticCount];
+            extensions.HapticTextures = new Dictionary<uint, Texture2D>();
             HashSet<int> textureIndices = new HashSet<int>();
             for (int i = 0; i < mpegMaterialHapticCount; i++)
             {
                 var materialJson = mpegMaterialHapticJson[i];
                 MpegMaterialHaptic mpegMaterialHaptic = new MpegMaterialHaptic
                 {
-                    name = materialJson["name"].Value<string>(),
+                    Name = materialJson["name"].Value<string>(),
                 };
-                var vibrationJson = materialJson["vibration"];
-                int vibrationCount = vibrationJson.Count();
-                mpegMaterialHaptic.vibration = new MpegMaterialHaptic.Vibration[vibrationCount];
+                var vibrationsJson = materialJson["vibration"];
+                int vibrationCount = vibrationsJson.Count();
+                mpegMaterialHaptic.Vibrations = new MpegMaterialHaptic.Vibration[vibrationCount];
                 for (int j = 0; j < vibrationCount; j++)
                 {
-                    var vibJson = vibrationJson[j];
+                    var vibrationJson = vibrationsJson[j];
                     MpegMaterialHaptic.Vibration vibration = new MpegMaterialHaptic.Vibration
                     {
-                        type = vibJson["type"].Value<string>(),
+                        Type = vibrationJson["type"].Value<string>(),
                     };
-                    var textureJson = vibJson["texture"];
+                    var textureJson = vibrationJson["texture"];
                     TextureInfo textureInfo = new TextureInfo
                     {
                         index = textureJson["index"].Value<int>(),
                     };
                     textureIndices.Add(textureInfo.index);
-                    vibration.texture = textureInfo;
-                    mpegMaterialHaptic.vibration[j] = vibration;
+                    vibration.Texture = textureInfo;
+                    mpegMaterialHaptic.Vibrations[j] = vibration;
                 }
-                extensions.mpegMaterialHaptic[i] = mpegMaterialHaptic;
+                extensions.MpegMaterialHaptics[i] = mpegMaterialHaptic;
             }
 
             List<UniTask> tasks = new List<UniTask>();
@@ -63,7 +63,7 @@ namespace SdVTouching
             var textureReq = UnityWebRequestTexture.GetTexture(Path.Combine(UrlRoot, uri));
             await textureReq.SendWebRequest();
             Texture2D texture = DownloadHandlerTexture.GetContent(textureReq);
-            extensions.hapticTextures.Add((uint)index, texture);
+            extensions.HapticTextures.Add((uint)index, texture);
         }
     }
 }

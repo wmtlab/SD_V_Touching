@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using GLTFast.Newtonsoft.Schema;
 using UnityEngine;
 
-namespace SdVTouching
+namespace SdVTouching.Gltf
 {
     public class SceneDescription
     {

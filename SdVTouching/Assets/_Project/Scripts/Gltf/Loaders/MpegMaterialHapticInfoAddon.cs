@@ -3,7 +3,7 @@ using GLTFast.Addons;
 using UnityEngine;
 using GltfImport = GLTFast.Newtonsoft.GltfImport;
 
-namespace SdVTouching
+namespace SdVTouching.Gltf
 {
     public class MpegMaterialHapticInfoAddon : ImportAddon<MpegMaterialHapticInfoAddonInstance> { }
     public class MpegMaterialHapticInfoAddonInstance : ImportAddonInstance

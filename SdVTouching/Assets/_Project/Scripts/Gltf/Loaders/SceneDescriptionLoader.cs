@@ -6,7 +6,7 @@ using GLTFast;
 using GLTFast.Addons;
 using GltfImport = GLTFast.Newtonsoft.GltfImport;
 
-namespace SdVTouching
+namespace SdVTouching.Gltf
 {
     public class SceneDescriptionLoader
     {

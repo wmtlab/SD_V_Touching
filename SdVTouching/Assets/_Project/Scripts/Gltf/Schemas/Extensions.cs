@@ -1,14 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SdVTouching
+namespace SdVTouching.Gltf
 {
     public class Extensions
     {
-        public MpegMaterialHaptic[] mpegMaterialHaptic;
-        public Dictionary<uint, Texture2D> hapticTextures;
-        // MPEG material haptic
-        // - materials
+        public MpegMaterialHaptic[] MpegMaterialHaptics { get; set; }
+        public Dictionary<uint, Texture2D> HapticTextures { get; set; }
+        public MpegSceneInteractivity[] MpegSceneInteractivities { get; set; }
         // MPEG scene interactivity
         // - triggers
         // - trigger to trigger adapter
