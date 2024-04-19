@@ -1,0 +1,89 @@
+{
+    "extensions": {
+        "MPEG_material_haptic": [
+            {
+                "name": "book001_haptic",
+                "vibration": [
+                    {
+                        // texture index in main.gltf
+                        "texture": {
+                            "index": 1
+                        },
+                        "type": "Low_Resolution"
+                    }
+                ]
+            }
+        ],
+        "MPEG_scene_interactivity": [
+            {
+                "triggers": [
+                    {
+                        "type": "TRIGGER_COLLISION",
+                        "nodes": [
+                            0
+                        ],
+                        "primitives": [
+                            {
+                                "type": "BV_SPHEROID",
+                                "radius": 0.5,
+                                "centroid": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TRIGGER_COLLISION",
+                        "nodes": [
+                            1
+                        ],
+                        "primitives": [
+                            {
+                                "type": "BV_CUBOID",
+                                "width": 1.0,
+                                "height": 1.0,
+                                "depth": 1.0,
+                                "centroid": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "actions": [
+                    {
+                        // player.TouchedObject = player.GetCollider().CollidedWith.transform
+                        "type": "ACTION_SET_HAPTIC",
+                        "hapticActionNodes": [
+                            {
+                                // the player node
+                                "node": 0,
+                                "useCollider": true,
+                                "hapticActionMedias": []
+                            }
+                        ]
+                    }
+                ],
+                "behaviors": [
+                    {
+                        "triggers": [
+                            0,
+                            1
+                        ],
+                        "actions": [
+                            0
+                        ],
+                        "triggersCombinationControl": "#0&#1",
+                        "triggersActivationControl": "TRIGGER_ACTIVATE_ON",
+                        "actionsControl": "SEQUENTIAL",
+                        "priority": 0
+                    }
+                ]
+            }
+        ]
+    }
+}
