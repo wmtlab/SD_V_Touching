@@ -53,6 +53,11 @@
     },
     "dotnet.defaultSolution": "SdVTouching.sln",
     "cSpell.words": [
+        "Geomagic",
+        "gltf",
         "Newtonsoft"
-    ]
+    ],
+    "files.associations": {
+        "*.gltf": "jsonc",
+    }
 }
