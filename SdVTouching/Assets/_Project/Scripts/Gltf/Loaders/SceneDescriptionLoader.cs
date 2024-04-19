@@ -16,7 +16,7 @@ namespace SdVTouching.Gltf
         public string FullSceneDescriptionUrl => Path.Combine(UrlRoot, SceneDescriptionUrl);
         public string FullExtensionsUrl => Path.Combine(UrlRoot, ExtensionsUrl);
         public Transform Parent;
-        private Dictionary<uint, GameObject> _nodeMapping = new Dictionary<uint, GameObject>();
+        private Dictionary<int, GameObject> _nodeMapping = new Dictionary<int, GameObject>();
 
         public async Task<SceneDescription> LoadAsync()
         {
@@ -55,7 +55,7 @@ namespace SdVTouching.Gltf
 
         private void AddNodeMapping(uint nodeIndex, GameObject gameObject)
         {
-            _nodeMapping[nodeIndex] = gameObject;
+            _nodeMapping[(int)nodeIndex] = gameObject;
         }
 
     }

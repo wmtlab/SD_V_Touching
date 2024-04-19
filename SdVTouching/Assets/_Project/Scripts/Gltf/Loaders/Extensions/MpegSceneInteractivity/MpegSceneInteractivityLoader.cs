@@ -27,6 +27,9 @@ namespace SdVTouching.Gltf
                 BehaviorsLoader behaviorsLoader = new BehaviorsLoader();
                 await behaviorsLoader.LoadAsync(interactivity, behaviorsJson);
 
+                CollisionTriggerAdapterLoader collisionTriggerAdapterLoader = new CollisionTriggerAdapterLoader();
+                await collisionTriggerAdapterLoader.LoadAsync(sd, interactivity);
+
                 extensions.MpegSceneInteractivities[i] = interactivity;
             }
             await UniTask.Yield();

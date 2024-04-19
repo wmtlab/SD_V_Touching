@@ -494,8 +494,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _urlRoot: sd
-  _sceneDescriptionUrl: main.gltf
-  _extensionsUrl: extensions.gltf
+  _sceneDescriptionName: main.gltf
+  _extensionsName: extensions.gltf
+  _useMock: 1
+  _vibrationMagnification: 2
+  _useCodec: 0
+  _tactileSignalCacheSize: 16
   _waveformUpdateDump: 1
 --- !u!4 &2020478980
 Transform:

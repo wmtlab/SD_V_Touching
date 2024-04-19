@@ -14,26 +14,26 @@ namespace SdVTouching.Gltf
             for (int i = 0; i < triggerCount; i++)
             {
                 var triggerJson = triggersJson[i];
-                ITrigger trigger = TriggerFactory(interactivity, triggerJson);
+                ITrigger trigger = TriggerFactory(triggerJson);
                 interactivity.Triggers[i] = trigger;
             }
             await UniTask.Yield();
         }
 
-        private static ITrigger TriggerFactory(MpegSceneInteractivity interactivity, JToken triggerJson)
+        private static ITrigger TriggerFactory(JToken triggerJson)
         {
             string type = triggerJson["type"].Value<string>();
             ITrigger trigger = null;
             switch (type)
             {
                 case "TRIGGER_COLLISION":
-                    trigger = CollisionTriggerFactory(interactivity, triggerJson);
+                    trigger = CollisionTriggerFactory(triggerJson);
                     break;
             }
             return trigger;
         }
 
-        private static CollisionTrigger CollisionTriggerFactory(MpegSceneInteractivity interactivity, JToken triggerJson)
+        private static CollisionTrigger CollisionTriggerFactory(JToken triggerJson)
         {
             CollisionTrigger trigger = new CollisionTrigger();
             JToken nodes = triggerJson["nodes"];
@@ -83,8 +83,6 @@ namespace SdVTouching.Gltf
                         break;
                 }
             }
-
-            // TODO: Add Adapters for Collider
             return trigger;
         }
 

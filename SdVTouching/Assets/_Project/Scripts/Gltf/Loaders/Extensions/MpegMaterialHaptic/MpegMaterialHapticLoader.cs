@@ -16,7 +16,7 @@ namespace SdVTouching.Gltf
         {
             int mpegMaterialHapticCount = mpegMaterialHapticJson.Count();
             extensions.MpegMaterialHaptics = new MpegMaterialHaptic[mpegMaterialHapticCount];
-            extensions.HapticTextures = new Dictionary<uint, Texture2D>();
+            extensions.HapticTextures = new Dictionary<int, Texture2D>();
             HashSet<int> textureIndices = new HashSet<int>();
             for (int i = 0; i < mpegMaterialHapticCount; i++)
             {
@@ -63,7 +63,7 @@ namespace SdVTouching.Gltf
             var textureReq = UnityWebRequestTexture.GetTexture(Path.Combine(UrlRoot, uri));
             await textureReq.SendWebRequest();
             Texture2D texture = DownloadHandlerTexture.GetContent(textureReq);
-            extensions.HapticTextures.Add((uint)index, texture);
+            extensions.HapticTextures.Add(index, texture);
         }
     }
 }

@@ -20,6 +20,7 @@ namespace SdVTouching
                 return;
             }
             _enabled = true;
+            _transform.rotation = Quaternion.Euler(90, 0, 0);
         }
 
         public void FixedUpdate()
