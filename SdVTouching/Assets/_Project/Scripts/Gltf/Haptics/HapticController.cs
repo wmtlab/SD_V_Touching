@@ -50,26 +50,26 @@ namespace SdVTouching.Gltf
                         {
                             continue;
                         }
-                        var materialHapticInfo = collidedWith.GetComponent<MpegMaterialHapticInfo>();
-                        if (!materialHapticInfo)
+                        var materialHapticAdapter = collidedWith.GetComponent<MpegMaterialHapticInfo>();
+                        if (!materialHapticAdapter)
                         {
                             continue;
                         }
-                        if (!materialHapticInfo.Initialized)
+                        if (!materialHapticAdapter.Initialized)
                         {
-                            materialHapticInfo.Initialize();
+                            materialHapticAdapter.Initialize();
                         }
-                        if (materialHapticInfo.mpegMaterialHaptic >= _sd.Extensions.MpegMaterialHaptics.Length)
+                        if (materialHapticAdapter.mpegMaterialHaptic >= _sd.Extensions.MpegMaterialHaptics.Length)
                         {
                             continue;
                         }
-                        var materialHaptic = _sd.Extensions.MpegMaterialHaptics[materialHapticInfo.mpegMaterialHaptic];
+                        var materialHaptic = _sd.Extensions.MpegMaterialHaptics[materialHapticAdapter.mpegMaterialHaptic];
                         var textureIndex = materialHaptic.Vibrations[0].Texture.index;
                         if (_sd.Extensions.HapticTextures.TryGetValue(textureIndex, out var texture))
                         {
                             var position = go.transform.position;
                             var normal = go.transform.up;
-                            if (materialHapticInfo.TryRaycast(position, normal, out var uv))
+                            if (materialHapticAdapter.TryRaycast(position, normal, out var uv))
                             {
                                 float signal = texture.GetPixelBilinear(uv.x, uv.y).r;
                                 _signals[_cacheIndex] = signal * Mathf.Sign(_cacheIndex);
